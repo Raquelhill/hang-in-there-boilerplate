@@ -108,9 +108,10 @@ var savePosterBtn = document.querySelector('.save-poster');
 var showSavedBtn = document.querySelector('.show-saved');
 
 var motivationalImageUrl = document.querySelector("#poster-image-url");
-var savedPostersGridElem = document.querySelector('.saved-posters-grid');
+var motivationalTitle = document.querySelector("#poster-title");
 var motivationalQuote = document.querySelector("#poster-quote");
 
+var savedPostersGridElem = document.querySelector('.saved-posters-grid');
 var mainPosterElem = document.querySelector('.main-poster');
 var savedPostersElem = document.querySelector('.saved-posters');
 var savedPostersGridElem = document.querySelector('.saved-posters-grid');
@@ -166,7 +167,10 @@ function goBackToMain() {
 function showMyPoster(e) {
  e.preventDefault()
  currentPoster = new Poster(motivationalImageUrl.value, motivationalTitle.value, motivationalQuote.value);
- posterImageElem.src = motivationalImageUrl.value; posterTitleElem.innerText = motivationalTitle.value; posterQuoteElem.innerText = motivationalQuote.value; images.push(posterImageElem.src);
+ posterImageElem.src = motivationalImageUrl.value;
+ posterTitleElem.innerText = motivationalTitle.value;
+ posterQuoteElem.innerText = motivationalQuote.value;
+ images.push(posterImageElem.src);
  titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
  takeMeBack() };
 
@@ -189,13 +193,27 @@ function showSaved() {
   for (var i = 0; i < savedPosters.length; i++) {
     var posterObject = savedPosters[i];
     savedPostersGridElem.innerHTML +=
-    <section class="mini-poster" id=${posterObject.id}>
-    <img id=${posterObject.id} src=${posterObject.imageURL}>
-    <h2 id=${posterObject.id}>${posterObject.title}</h2>
-    <h4 id=${posterObject.id}>${posterObject.quote}</h4>
-    </section> }
+    `<section class="mini-poster" id=${posterObject.id}>
+      <img id=${posterObject.id} src=${posterObject.imageURL}>
+      <h2 id=${posterObject.id}>${posterObject.title}</h2>
+      <h4 id=${posterObject.id}>${posterObject.quote}</h4>
+    </section>`
+    }
    };
 
-   function deletePoster(event) {
-    for (var i = 0; i < savedPosters.length; i++) {
-     if (event.target.id == savedPosters[i].id) { savedPosters.splice(i, 1); } } showSaved(); }
+function deletePoster(event) { for (var i = 0; i < savedPosters.length; i++) {
+  if (event.target.id == savedPosters[i].id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+showSaved();
+};
+
+function deletePoster(event) {
+  for (var i = 0; i < savedPosters.length; i++) {
+     if (event.target.id == savedPosters[i].id) { 
+       savedPosters.splice(i, 1);
+     } 
+  } 
+  showSaved(); }
+
