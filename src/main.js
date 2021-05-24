@@ -171,7 +171,8 @@ function showMyPoster(e) {
  posterTitleElem.innerText = motivationalTitle.value;
  posterQuoteElem.innerText = motivationalQuote.value;
  images.push(posterImageElem.src);
- titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
+ titles.push(posterTitleElem.innerText);
+ quotes.push(posterQuoteElem.innerText);
  takeMeBack() };
 
  function uploadPoster(posterObject) {
@@ -211,9 +212,8 @@ showSaved();
 
 function deletePoster(event) {
   for (var i = 0; i < savedPosters.length; i++) {
-     if (event.target.id == savedPosters[i].id) { 
+     if (event.target.id == savedPosters[i].id) {
        savedPosters.splice(i, 1);
-     } 
-  } 
+     }
+  }
   showSaved(); }
-
