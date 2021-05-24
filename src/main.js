@@ -210,11 +210,3 @@ function deletePoster(event) {
   }
 showSaved();
 };
-
-function deletePoster(event) {
-  for (var i = 0; i < savedPosters.length; i++) {
-     if (event.target.id == savedPosters[i].id) {
-       savedPosters.splice(i, 1);
-     }
-  }
-  showSaved(); }
